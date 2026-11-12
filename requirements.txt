@@ -1,0 +1,4 @@
+# No Python dependencies are needed.
+# These are pure HTML/CSS/JavaScript projects with no build step.
+# The tests run with the Python 3 standard library only:
+#   python3 tests/run_tests.py

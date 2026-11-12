@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clamor's Blog — Notes on building things</title>
+<meta name="description" content="A lightweight Markdown blog by Clamor: technical notes on telecom, fiber QC and full-stack building. Write a post in Markdown and preview it live.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress" id="progressBar" aria-hidden="true"></div>
+<header class="site-head">
+  <a class="logo" href="#" id="homeLink">✍️ Clamor's Blog</a>
+  <p class="tagline">Notes on telecom, fiber QC &amp; building things</p>
+  <div class="toolbar">
+    <input type="search" id="searchBox" placeholder="Search posts…" aria-label="Search posts">
+    <button class="btn primary" id="newPostBtn" type="button">+ Write a post</button>
+    <button class="btn" id="exportBtn" type="button">Export JSON</button>
+    <label class="btn import-label">Import JSON
+      <input type="file" id="importFile" accept="application/json" hidden>
+    </label>
+  </div>
+  <div class="tags" id="tagBar" aria-label="Filter by tag"></div>
+</header>
+
+<main>
+  <section id="listView">
+    <p class="muted" id="resultCount"></p>
+    <div id="postList" class="post-list"></div>
+    <p id="noPosts" class="muted" hidden>No posts match. Try clearing the search or a different tag.</p>
+  </section>
+
+  <article id="postView" hidden>
+    <button class="btn ghost" id="backBtn" type="button">← All posts</button>
+    <h1 id="postTitle"></h1>
+    <p class="meta" id="postMeta"></p>
+    <div class="tags" id="postTags"></div>
+    <div class="post-body" id="postBody"></div>
+    <div class="post-actions">
+      <button class="btn" id="editPostBtn" type="button">Edit this post</button>
+      <button class="btn danger" id="deletePostBtn" type="button">Delete</button>
+    </div>
+  </article>
+
+  <section id="editorView" hidden>
+    <h2 id="editorHeading">Write a post</h2>
+    <p class="muted">Markdown supported: <code># heading</code>, <code>**bold**</code>,
+      <code>*italic*</code>, <code>`code`</code>, <code>[link](url)</code>, lists, quotes and code blocks.
+      Saved to your browser (localStorage) — nothing leaves your device.</p>
+    <form id="editorForm">
+      <label>Title <input id="edTitle" type="text" required maxlength="120" placeholder="Post title"></label>
+      <label>Tags (comma-separated) <input id="edTags" type="text" placeholder="e.g. javascript, fiber, career"></label>
+      <div class="editor-grid">
+        <label>Markdown <textarea id="edBody" rows="18" required placeholder="# Hello&#10;&#10;Write your post in Markdown…"></textarea></label>
+        <div class="preview-pane">
+          <p class="preview-label">Live preview · <span id="edReadTime"></span></p>
+          <div class="post-body preview" id="edPreview"></div>
+        </div>
+      </div>
+      <div class="editor-actions">
+        <button class="btn primary" type="submit">Publish</button>
+        <button class="btn ghost" id="cancelEditBtn" type="button">Cancel</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer><p>© 2026 Clamor · A Markdown blog that is also its own CMS · Posts live in your browser's localStorage.</p></footer>
+<script src="app.js"></script>
+</body>
+</html>
